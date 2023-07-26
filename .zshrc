@@ -40,9 +40,6 @@ alias vi="nvim"
 
 alias find="rg"
 
-# load zsh-completions
-autoload -U compinit && compinit
-
 source <(kubectl completion zsh)
 
 source /opt/homebrew/opt/nvm/nvm.sh
