@@ -1,0 +1,10 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = DaAlbrecht
+	email = dadidi42@gmail.com
+	signingkey = 8434B6AF
+[commit]
+	gpgsign = true
+[gpg]
+	program = /opt/homebrew/bin/gpg
