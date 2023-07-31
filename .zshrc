@@ -29,6 +29,8 @@ alias sshconfig="vim ~/.ssh/config"
 
 #use batcat instead of cat
 alias cat="bat"
+
+alias ls="exa"
 # edit global git configuration
 alias gitconfig="vim ~/.gitconfig"
 
@@ -60,3 +62,6 @@ export PATH="$HOME/dev/tools/apache-maven-3.9.2/bin:$PATH"
 alias java20="export JAVA_HOME=/opt/homebrew/opt/openjdk && export PATH=/opt/homebrew/opt/openjdk/bin:$PATH"
 
 alias java17="export JAVA_HOME=/opt/homebrew/opt/openjdk@17 && export PATH=/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+
+export PATH="$HOME/.cargo/bin:$PATH"
