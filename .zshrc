@@ -15,7 +15,7 @@ alias zshconfig="vim ~/.zshrc"
 
 alias vimconfig="vim ~/.config/nvim"
 
-alias termconfig="vim ~/.config/alacritty/alacritty.yml"
+alias termconfig="vim ~/.config/wezterm/wezterm.lua"
 
 # reload zsh configuration
 alias zshsource="source ~/.zshrc"

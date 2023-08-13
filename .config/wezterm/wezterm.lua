@@ -37,7 +37,8 @@ config.window_padding = {
     bottom = 0,
 }
 
-config.tab_bar_at_bottom = true
+-- config.tab_bar_at_bottom = true
+-- try at the top, could use the dead space of the notch
 
 --keybindings
 
