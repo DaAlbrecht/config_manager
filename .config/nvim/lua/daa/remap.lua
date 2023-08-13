@@ -20,3 +20,6 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 -- copy to + register   : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+--lazy shift finger lol
+vim.cmd("command! -nargs=0 W w")
