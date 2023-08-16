@@ -44,29 +44,39 @@ config.window_padding = {
 
 config.keys = {
     -- Split Panes
-    { key = "d", mods = "CMD",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
-    { key = "d", mods = "CMD|SHIFT", action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } } },
+    { key = "d",          mods = "CMD",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
+    {
+        key = "d",
+        mods = "CMD|SHIFT",
+        action = wezterm.action { SplitVertical = {
+            domain = "CurrentPaneDomain" } }
+    },
 
     -- Pane Navigation
-    { key = "h", mods = "CMD",       action = wezterm.action { ActivatePaneDirection = "Prev" } },
-    { key = "j", mods = "CMD",       action = wezterm.action { ActivatePaneDirection = "Down" } },
-    { key = "k", mods = "CMD",       action = wezterm.action { ActivatePaneDirection = "Up" } },
-    { key = "l", mods = "CMD",       action = wezterm.action { ActivatePaneDirection = "Next" } },
+    { key = "h",          mods = "CMD",       action = wezterm.action { ActivatePaneDirection = "Prev" } },
+    { key = "j",          mods = "CMD",       action = wezterm.action { ActivatePaneDirection = "Down" } },
+    { key = "k",          mods = "CMD",       action = wezterm.action { ActivatePaneDirection = "Up" } },
+    { key = "l",          mods = "CMD",       action = wezterm.action { ActivatePaneDirection = "Next" } },
 
     -- Resize Panes
-    { key = "h", mods = "CMD|SHIFT", action = wezterm.action { AdjustPaneSize = { "Left", 5 } } },
-    { key = "j", mods = "CMD|SHIFT", action = wezterm.action { AdjustPaneSize = { "Down", 5 } } },
-    { key = "k", mods = "CMD|SHIFT", action = wezterm.action { AdjustPaneSize = { "Up", 5 } } },
-    { key = "l", mods = "CMD|SHIFT", action = wezterm.action { AdjustPaneSize = { "Right", 5 } } },
+    { key = "h",          mods = "CMD|SHIFT", action = wezterm.action { AdjustPaneSize = { "Left", 5 } } },
+    { key = "j",          mods = "CMD|SHIFT", action = wezterm.action { AdjustPaneSize = { "Down", 5 } } },
+    { key = "k",          mods = "CMD|SHIFT", action = wezterm.action { AdjustPaneSize = { "Up", 5 } } },
+    { key = "l",          mods = "CMD|SHIFT", action = wezterm.action { AdjustPaneSize = { "Right", 5 } } },
 
     -- Close Pane
-    { key = "w", mods = "CMD",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
+    { key = "w",          mods = "CMD",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
 
     -- Copy Mode
-    { key = "[", mods = "CMD",       action = wezterm.action { CopyTo = "Clipboard" } },
+    { key = "[",          mods = "CMD",       action = wezterm.action { CopyTo = "Clipboard" } },
 
     -- Paste
-    { key = "]", mods = "CMD",       action = wezterm.action { PasteFrom = "Clipboard" } },
+    { key = "]",          mods = "CMD",       action = wezterm.action { PasteFrom = "Clipboard" } },
+
+    --jump words
+    { key = "LeftArrow",  mods = "OPT",       action = wezterm.action { SendString = "\x1bb" } },
+    -- Make Option-Right equivalent to Alt-f; forward-word
+    { key = "RightArrow", mods = "OPT",       action = wezterm.action { SendString = "\x1bf" } },
 }
 
 -- and finally, return the configuration to wezterm
