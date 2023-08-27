@@ -63,5 +63,7 @@ alias java20="export JAVA_HOME=/opt/homebrew/opt/openjdk && export PATH=/opt/hom
 
 alias java17="export JAVA_HOME=/opt/homebrew/opt/openjdk@17 && export PATH=/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
+#lsp development
+export PATH="$HOME/dev/private/rust/lsp/apache-synapse-lsp/target/debug:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"

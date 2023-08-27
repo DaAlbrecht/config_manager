@@ -64,19 +64,19 @@ vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 Wso2lsp = function()
     vim.lsp.start({
-        name = 'wso2lsp',
-        cmd = { "wso2-lsp" },
-        root_dir = vim.fs.dirname('didi'),
+        name = 'apache-synapse-lsp',
+        cmd = { "apache-synapse-lsp" },
+        root_dir = vim.loop.cwd(),
         detached = false,
         filetypes = { "xml" },
         on_attach = function(client, bufnr)
-            print('didi  server is running on buffer ' .. bufnr)
+            print('apache-synapse-lsp server is running on buffer ' .. bufnr)
         end,
         autostart = true
     })
 end
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*.didi.xml",
+    pattern = "*xml",
     callback = function(_)
         vim.b.filetype = "xml"
         Wso2lsp()

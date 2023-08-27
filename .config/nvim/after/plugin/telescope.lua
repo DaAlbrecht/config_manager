@@ -1,10 +1,13 @@
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>pf', function()
-    builtin.find_files({ hidden = true, no_ignore = true })
-end, {})
 
+vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = '[P]ick [F]ile' })
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = '[P]ick [B]uffer' })
+vim.keymap.set('n', '<leader>ph', function()
+    require('telescope.builtin').find_files({
+        hidden = true,
+    })
+end, { desc = '[P]ick [H]idden' })
 
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
