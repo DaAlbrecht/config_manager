@@ -68,4 +68,6 @@ return require('packer').startup(function(use)
 
     -- Java
     use { "mfussenegger/nvim-jdtls", ft = { "java" } }
+
+    use { 'kaarmu/typst.vim', ft = { 'typst' } }
 end)
