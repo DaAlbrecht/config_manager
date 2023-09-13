@@ -60,6 +60,7 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
+
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 Wso2lsp = function()
