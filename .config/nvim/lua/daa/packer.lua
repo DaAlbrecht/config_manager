@@ -65,9 +65,12 @@ return require('packer').startup(function(use)
     }
     use("github/copilot.vim")
     use('mfussenegger/nvim-dap')
-
     -- Java
     use { "mfussenegger/nvim-jdtls", ft = { "java" } }
 
+    --typst
     use { 'kaarmu/typst.vim', ft = { 'typst' } }
+
+    use 'nvim-tree/nvim-web-devicons'
+    use 'onsails/lspkind-nvim'
 end)

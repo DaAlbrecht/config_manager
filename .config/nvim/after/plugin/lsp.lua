@@ -1,9 +1,18 @@
 local lsp = require("lsp-zero")
-local lspconfig = require("lspconfig")
 
 lsp.preset("recommended")
 
 lsp.nvim_workspace()
+
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = " ",
+        warn = " ",
+        hint = " ",
+        info = " ",
+    }
+})
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -22,18 +31,6 @@ cmp_mappings['<S-Tab>'] = nil
 lsp.setup_nvim_cmp({
     mapping = cmp_mappings
 })
-
-
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
-})
-
 
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
@@ -54,6 +51,12 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, opts)
 end)
 
+require('lspconfig').typst_lsp.setup {
+    settings = {
+        exportPdf = "never" -- Choose onType, onSave or never.
+        -- serverPath = "" -- Normally, there is no need to uncomment it.
+    }
+}
 
 lsp.setup()
 
@@ -63,29 +66,43 @@ vim.diagnostic.config({
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
-Wso2lsp = function()
-    vim.lsp.start({
-        name = 'apache-synapse-lsp',
-        cmd = { "apache-synapse-lsp" },
-        root_dir = vim.loop.cwd(),
-        detached = false,
-        filetypes = { "xml" },
-        on_attach = function(client, bufnr)
-            print('apache-synapse-lsp server is running on buffer ' .. bufnr)
-        end,
-        autostart = true
-    })
-end
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*xml",
-    callback = function(_)
-        vim.b.filetype = "xml"
-        Wso2lsp()
-    end
+local lspkind = require('lspkind')
+
+cmp.setup({
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = 'symbol_text',  -- show only symbol annotations
+            maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+        })
+    }
 })
 
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(args)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
-    end,
-})
+
+--
+--Wso2lsp = function()
+--    vim.lsp.start({
+--        name = 'apache-synapse-lsp',
+--        cmd = { "apache-synapse-lsp" },
+--        root_dir = vim.loop.cwd(),
+--        detached = false,
+--        filetypes = { "xml" },
+--        on_attach = function(client, bufnr)
+--            print('apache-synapse-lsp server is running on buffer ' .. bufnr)
+--        end,
+--        autostart = true
+--    })
+--end
+--vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+--    pattern = "*xml",
+--    callback = function(_)
+--        vim.b.filetype = "xml"
+--        Wso2lsp()
+--    end
+--})
+--
+--vim.api.nvim_create_autocmd('LspAttach', {
+--    callback = function(args)
+--        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
+--    end,
+--})
