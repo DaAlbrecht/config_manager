@@ -38,9 +38,9 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
-    --    use 'simrat39/rust-tools.nvim'
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
     )
+    use("nvim-treesitter/nvim-treesitter-context")
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',

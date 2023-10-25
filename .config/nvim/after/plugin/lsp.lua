@@ -58,6 +58,16 @@ require('lspconfig').typst_lsp.setup {
     }
 }
 
+require 'lspconfig'.rust_analyzer.setup {
+    settings = {
+        ['rust-analyzer'] = {
+            checkOnSave = {
+                command = "clippy",
+            },
+        }
+    }
+}
+
 lsp.setup()
 
 vim.diagnostic.config({
