@@ -44,26 +44,24 @@ alias vi="nvim"
 
 alias find="rg"
 
+alias java20="export JAVA_HOME=/opt/homebrew/opt/openjdk && export PATH=/opt/homebrew/opt/openjdk/bin:$PATH"
+
+alias java17="export JAVA_HOME=/opt/homebrew/opt/openjdk@17 && export PATH=/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
 # load zsh-completions
 autoload -U compinit && compinit
 
 source <(kubectl completion zsh)
 
 source /opt/homebrew/opt/nvm/nvm.sh
-# use starship theme (needs to be at the end)
-eval "$(starship init zsh)"
-export GPG_TTY=$(tty)
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export KUBE_EDITOR="nvim"
+
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 export JAVA_HOME="/opt/homebrew/opt/openjdk"
 
 export PATH="$HOME/dev/tools/apache-maven-3.9.2/bin:$PATH"
-
-alias java20="export JAVA_HOME=/opt/homebrew/opt/openjdk && export PATH=/opt/homebrew/opt/openjdk/bin:$PATH"
-
-alias java17="export JAVA_HOME=/opt/homebrew/opt/openjdk@17 && export PATH=/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 #lsp development
 export PATH="$HOME/dev/private/rust/lsp/apache-synapse-lsp/target/debug:$PATH"
@@ -71,3 +69,9 @@ export PATH="$HOME/dev/private/rust/lsp/apache-synapse-lsp/target/debug:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH="$HOME/dev/integon/intern/tools:$PATH"
+
+# use starship theme (needs to be at the end)
+eval "$(starship init zsh)"
+export GPG_TTY=$(tty)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
