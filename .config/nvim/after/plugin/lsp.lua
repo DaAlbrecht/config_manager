@@ -89,30 +89,29 @@ cmp.setup({
 })
 
 
---
---Wso2lsp = function()
---    vim.lsp.start({
---        name = 'apache-synapse-lsp',
---        cmd = { "apache-synapse-lsp" },
---        root_dir = vim.loop.cwd(),
---        detached = false,
---        filetypes = { "xml" },
---        on_attach = function(client, bufnr)
---            print('apache-synapse-lsp server is running on buffer ' .. bufnr)
---        end,
---        autostart = true
---    })
---end
---vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
---    pattern = "*xml",
---    callback = function(_)
---        vim.b.filetype = "xml"
---        Wso2lsp()
---    end
---})
---
---vim.api.nvim_create_autocmd('LspAttach', {
---    callback = function(args)
---        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
---    end,
---})
+Wso2lsp = function()
+    vim.lsp.start_client({
+        name = 'apache-synapse-lsp',
+        cmd = { "apache-synapse-lsp" },
+        root_dir = vim.loop.cwd(),
+        detached = false,
+        filetypes = { "xml" },
+        on_attach = function(client, bufnr)
+            print('apache-synapse-lsp server is running on buffer ' .. bufnr)
+        end,
+        autostart = true
+    })
+end
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*apache.xml",
+    callback = function(_)
+        vim.b.filetype = "xml"
+        Wso2lsp()
+    end
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
+    end,
+})

@@ -42,3 +42,10 @@ vim.opt.spell = true
 vim.o.completeopt = 'menuone,noselect'
 
 vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { noremap = true, silent = true })
+
+
+vim.filetype.add({
+    extension = {
+        bal = 'ballerina'
+    }
+})
