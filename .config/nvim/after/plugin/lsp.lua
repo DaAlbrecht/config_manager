@@ -90,22 +90,26 @@ cmp.setup({
 
 
 Wso2lsp = function()
-    vim.lsp.start_client({
+    vim.lsp.start({
         name = 'apache-synapse-lsp',
         cmd = { "apache-synapse-lsp" },
         root_dir = vim.loop.cwd(),
         detached = false,
-        filetypes = { "xml" },
+        filetypes = { "foo" },
         on_attach = function(client, bufnr)
             print('apache-synapse-lsp server is running on buffer ' .. bufnr)
         end,
         autostart = true
     })
+    vim.lsp.set_log_level 'debug'
+    if vim.fn.has 'nvim-0.5.1' == 1 then
+        require('vim.lsp.log').set_format_func(vim.inspect)
+    end
 end
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*apache.xml",
+    pattern = "*apache.foo",
     callback = function(_)
-        vim.b.filetype = "xml"
+        vim.b.filetype = "foo"
         Wso2lsp()
     end
 })
