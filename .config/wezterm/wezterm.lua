@@ -12,10 +12,6 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-wezterm.on("gui-startup", function()
-    local tab, pane, window = mux.spawn_window(cmd or {})
-    window:gui_window():toggle_fullscreen()
-end)
 
 -- This is where you actually apply your config choices
 config.font = wezterm.font_with_fallback {
@@ -42,9 +38,20 @@ config.window_padding = {
 
 --keybindings
 if wezterm.target_triple == 'aarch64-apple-darwin' then
+    -- start wezterm in fullscreen for macos
+    wezterm.on("gui-startup", function()
+        local tab, pane, window = mux.spawn_window(cmd or {})
+        window:gui_window():toggle_fullscreen()
+    end)
+
     config.keys = {
         -- Split Panes
-        { key = "d",          mods = "CMD",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
+        {
+            key = "d",
+            mods = "CMD",
+            action = wezterm.action { SplitHorizontal = {
+                domain = "CurrentPaneDomain" } }
+        },
         {
             key = "d",
             mods = "CMD|SHIFT",
@@ -82,7 +89,12 @@ if wezterm.target_triple == 'aarch64-apple-darwin' then
 else
     config.keys = {
         -- Split Panes
-        { key = "d",          mods = "ALT|SHIFT|CTRL",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
+        {
+            key = "d",
+            mods = "ALT|SHIFT|CTRL",
+            action = wezterm.action { SplitHorizontal = {
+                domain = "CurrentPaneDomain" } }
+        },
         {
             key = "d",
             mods = "CMD|SHIFT",
@@ -90,34 +102,34 @@ else
                 domain = "CurrentPaneDomain" } }
         },
 
-        -- new tab 
-        { key = "t",          mods = "ALT|SHIFT|CTRL",       action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
+        -- new tab
+        { key = "t",          mods = "ALT|SHIFT|CTRL", action = wezterm.action { SpawnTab = "CurrentPaneDomain" } },
 
         -- Pane Navigation
-        { key = "h",          mods = "ALT|SHIFT|CTRL",       action = wezterm.action { ActivatePaneDirection = "Prev" } },
-        { key = "j",          mods = "ALT|SHIFT|CTRL",       action = wezterm.action { ActivatePaneDirection = "Down" } },
-        { key = "k",          mods = "ALT|SHIFT|CTRL",       action = wezterm.action { ActivatePaneDirection = "Up" } },
-        { key = "l",          mods = "ALT|SHIFT|CTRL",       action = wezterm.action { ActivatePaneDirection = "Next" } },
+        { key = "h",          mods = "ALT|SHIFT|CTRL", action = wezterm.action { ActivatePaneDirection = "Prev" } },
+        { key = "j",          mods = "ALT|SHIFT|CTRL", action = wezterm.action { ActivatePaneDirection = "Down" } },
+        { key = "k",          mods = "ALT|SHIFT|CTRL", action = wezterm.action { ActivatePaneDirection = "Up" } },
+        { key = "l",          mods = "ALT|SHIFT|CTRL", action = wezterm.action { ActivatePaneDirection = "Next" } },
 
         -- Resize Panes
-        { key = "h",          mods = "ALT|SHIFT", action = wezterm.action { AdjustPaneSize = { "Left", 5 } } },
-        { key = "j",          mods = "ALT|SHIFT", action = wezterm.action { AdjustPaneSize = { "Down", 5 } } },
-        { key = "k",          mods = "ALT|SHIFT", action = wezterm.action { AdjustPaneSize = { "Up", 5 } } },
-        { key = "l",          mods = "ALT|SHIFT", action = wezterm.action { AdjustPaneSize = { "Right", 5 } } },
+        { key = "h",          mods = "ALT|SHIFT",      action = wezterm.action { AdjustPaneSize = { "Left", 5 } } },
+        { key = "j",          mods = "ALT|SHIFT",      action = wezterm.action { AdjustPaneSize = { "Down", 5 } } },
+        { key = "k",          mods = "ALT|SHIFT",      action = wezterm.action { AdjustPaneSize = { "Up", 5 } } },
+        { key = "l",          mods = "ALT|SHIFT",      action = wezterm.action { AdjustPaneSize = { "Right", 5 } } },
 
         -- Close Pane
-        { key = "w",          mods = "ALT|SHIFT|CTRL",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
+        { key = "w",          mods = "ALT|SHIFT|CTRL", action = wezterm.action { CloseCurrentPane = { confirm = true } } },
 
         -- Copy Mode
-        { key = "[",          mods = "ALT|SHIFT|CTRL",       action = wezterm.action { CopyTo = "Clipboard" } },
+        { key = "[",          mods = "ALT|SHIFT|CTRL", action = wezterm.action { CopyTo = "Clipboard" } },
 
         -- Paste
-        { key = "]",          mods = "ALT|SHIFT|CTRL",       action = wezterm.action { PasteFrom = "Clipboard" } },
+        { key = "]",          mods = "ALT|SHIFT|CTRL", action = wezterm.action { PasteFrom = "Clipboard" } },
 
         --jump words
-        { key = "LeftArrow",  mods = "OPT",       action = wezterm.action { SendString = "\x1bb" } },
+        { key = "LeftArrow",  mods = "OPT",            action = wezterm.action { SendString = "\x1bb" } },
         -- Make Option-Right equivalent to Alt-f; forward-word
-        { key = "RightArrow", mods = "OPT",       action = wezterm.action { SendString = "\x1bf" } },
+        { key = "RightArrow", mods = "OPT",            action = wezterm.action { SendString = "\x1bf" } },
 
     }
 end
