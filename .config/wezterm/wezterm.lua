@@ -15,7 +15,7 @@ end
 
 -- This is where you actually apply your config choices
 config.font = wezterm.font_with_fallback {
-    'Hack FC Ligatured CCG',
+    'Berkeley Mono',
     'Hack Nerd Font Mono',
 }
 

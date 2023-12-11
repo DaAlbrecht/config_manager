@@ -68,7 +68,12 @@ export PATH="$HOME/dev/private/rust/lsp/apache-synapse-lsp/target/debug:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
+export PATH="$HOME/.go/bin:$PATH"
+
 export PATH="$HOME/dev/integon/intern/tools:$PATH"
+
+export GOBIN="$HOME/.go/bin"
+
 
 # use starship theme (needs to be at the end)
 eval "$(starship init zsh)"
