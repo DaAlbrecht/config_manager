@@ -20,7 +20,7 @@ config.font = wezterm.font_with_fallback {
 }
 
 config.font_size = 12.0
-config.window_background_opacity = 0.9
+config.window_background_opacity = 1
 
 -- For example, changing the color scheme:
 config.color_scheme = 'Kanagawa (Gogh)'

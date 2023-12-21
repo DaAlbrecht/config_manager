@@ -80,3 +80,4 @@ eval "$(starship init zsh)"
 export GPG_TTY=$(tty)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"

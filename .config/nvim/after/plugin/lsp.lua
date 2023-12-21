@@ -58,6 +58,14 @@ require('lspconfig').typst_lsp.setup {
     }
 }
 
+require("lspconfig").clangd.setup {
+    on_attach = on_attach,
+    capabilities = cmp,
+    cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
+    },
+}
 
 lsp.setup()
 
