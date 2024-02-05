@@ -47,6 +47,6 @@ vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { noremap = true, si
 vim.filetype.add({
     extension = {
         bal = 'ballerina',
-        foo = 'foo'
+        apachesynapse = 'apachesynapse',
     }
 })
