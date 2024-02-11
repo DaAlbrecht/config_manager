@@ -106,10 +106,11 @@ Wso2lsp = function()
         require('vim.lsp.log').set_format_func(vim.inspect)
     end
 end
+
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*apache.foo",
+    pattern = "*apache.apachesynapse",
     callback = function(_)
-        vim.b.filetype = "foo"
+        vim.b.filetype = "apachesynapse"
         Wso2lsp()
     end
 })

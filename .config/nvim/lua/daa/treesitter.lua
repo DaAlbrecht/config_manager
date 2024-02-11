@@ -10,8 +10,8 @@ parser_config.apachesynapse = {
 
 parser_config.ballerina = {
     install_info = {
-        url = "https://github.com/heshanpadmasiri/tree-sitter-ballerina", -- local path or git repo
-        files = { "src/parser.c" },                                       -- note that some parsers also require src/scanner.c or src/scanner.cc
+        url = "~/dev/integon/tree-sitter-ballerina/", -- local path or git repo
+        files = { "src/parser.c" },                   -- note that some parsers also require src/scanner.c or src/scanner.cc
         branch = "main",
     },
     filetype = "ballerina", -- if filetype does not match the parser name
