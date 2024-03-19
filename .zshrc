@@ -48,6 +48,8 @@ alias java20="export JAVA_HOME=/opt/homebrew/opt/openjdk && export PATH=/opt/hom
 
 alias java17="export JAVA_HOME=/opt/homebrew/opt/openjdk@17 && export PATH=/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
+alias java11="export JAVA_HOME=/opt/homebrew/opt/openjdk@11 && export PATH=/opt/homebrew/opt/openjdk@11/bin:$PATH"
+
 # load zsh-completions
 autoload -U compinit && compinit
 
