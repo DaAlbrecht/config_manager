@@ -42,7 +42,9 @@ alias vim="nvim"
 
 alias vi="nvim"
 
-alias find="rg"
+alias find="fd"
+
+alias grep="rg"
 
 alias java20="export JAVA_HOME=/opt/homebrew/opt/openjdk && export PATH=/opt/homebrew/opt/openjdk/bin:$PATH"
 
