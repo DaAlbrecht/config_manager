@@ -1,3 +1,8 @@
+# Core
+
+- neovim
+- wezterm
+
 ## Setup
 
 use yadm to clone this repo
