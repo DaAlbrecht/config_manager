@@ -73,4 +73,10 @@ return require('packer').startup(function(use)
 
     use 'nvim-tree/nvim-web-devicons'
     use 'onsails/lspkind-nvim'
+    use({
+        "stevearc/oil.nvim",
+        config = function()
+            require("oil").setup()
+        end,
+    })
 end)
