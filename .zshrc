@@ -78,6 +78,11 @@ export PATH="$HOME/dev/integon/intern/tools:$PATH"
 
 export GOBIN="$HOME/.go/bin"
 
+export CC="/opt/homebrew/bin/gcc-12"
+export CXX="/opt/homebrew/bin/g++-12"
+
+export CMAKE_C_COMPILER="/opt/homebrew/bin/gcc-12"
+export CMAKE_CXX_COMPILER="/opt/homebrew/bin/g++-12"
 
 # use starship theme (needs to be at the end)
 eval "$(starship init zsh)"

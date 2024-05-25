@@ -76,4 +76,5 @@ return require('packer').startup(function(use)
     use({
         "stevearc/oil.nvim",
     })
+    use 'Civitasv/cmake-tools.nvim'
 end)
