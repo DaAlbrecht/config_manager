@@ -1,5 +1,5 @@
 vim.keymap.set("n", "<leader>fe", function()
-    require("oil").open_float()
+    require("oil").open()
 end)
 
 require("oil").setup({
