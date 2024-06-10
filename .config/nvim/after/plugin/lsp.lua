@@ -20,8 +20,8 @@ local luasnip = require 'luasnip'
 luasnip.config.setup {}
 
 local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-j>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-k>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C><cr>'] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
