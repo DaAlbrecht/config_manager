@@ -75,10 +75,7 @@ if wezterm.target_triple == 'aarch64-apple-darwin' then
         { key = "w",          mods = "CMD",       action = wezterm.action { CloseCurrentPane = { confirm = true } } },
 
         -- Copy Mode
-        { key = "[",          mods = "CMD",       action = wezterm.action { CopyTo = "Clipboard" } },
-
-        -- Paste
-        { key = "]",          mods = "CMD",       action = wezterm.action { PasteFrom = "Clipboard" } },
+        { key = "v",          mods = "CMD|SHIFT", action = wezterm.action.ActivateCopyMode },
 
         --jump words
         { key = "LeftArrow",  mods = "OPT",       action = wezterm.action { SendString = "\x1bb" } },
@@ -121,7 +118,7 @@ else
         { key = "w",          mods = "ALT|SHIFT|CTRL", action = wezterm.action { CloseCurrentPane = { confirm = true } } },
 
         -- Copy Mode
-        { key = "[",          mods = "ALT|SHIFT|CTRL", action = wezterm.action { CopyTo = "Clipboard" } },
+        { key = "v",          mods = "ALT|SHIFT|CTRL", action = wezterm.action.ActivateCopyMode },
 
         -- Paste
         { key = "]",          mods = "ALT|SHIFT|CTRL", action = wezterm.action { PasteFrom = "Clipboard" } },
