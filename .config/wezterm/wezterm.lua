@@ -24,6 +24,7 @@ config.window_background_opacity = 1
 
 -- For example, changing the color scheme:
 config.color_scheme = 'Kanagawa (Gogh)'
+--config.color_scheme = 'Gruvbox Light'
 
 config.enable_scroll_bar = false
 config.window_padding = {
@@ -81,7 +82,6 @@ if wezterm.target_triple == 'aarch64-apple-darwin' then
         { key = "LeftArrow",  mods = "OPT",       action = wezterm.action { SendString = "\x1bb" } },
         -- Make Option-Right equivalent to Alt-f; forward-word
         { key = "RightArrow", mods = "OPT",       action = wezterm.action { SendString = "\x1bf" } },
-
     }
 else
     config.keys = {

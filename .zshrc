@@ -76,6 +76,8 @@ export PATH="$HOME/.go/bin:$PATH"
 
 export PATH="$HOME/dev/integon/intern/tools:$PATH"
 
+export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+
 export GOBIN="$HOME/.go/bin"
 
 #export CC="/opt/homebrew/bin/gcc-12"
