@@ -22,8 +22,8 @@ luasnip.config.setup {}
 local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C><cr>'] = cmp.mapping.scroll_docs(4),
+    ['<Up>'] = cmp.mapping.scroll_docs(-4),
+    ['<Down>'] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ['<C-l>'] = cmp.mapping(function()
         if luasnip.expand_or_locally_jumpable() then
