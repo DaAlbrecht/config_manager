@@ -23,3 +23,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 --lazy shift finger lol
 vim.cmd("command! -nargs=0 W w")
+
+vim.keymap.set("i", "<Right>", "<Esc>")
+vim.keymap.set("n", "<Right>", "<Esc>")
+vim.keymap.set("v", "<Right>", "<Esc>")
