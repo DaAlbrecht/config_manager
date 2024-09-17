@@ -10,6 +10,7 @@ vim.opt.expandtab = true
 
 vim.opt.scrolloff = 8
 
+vim.opt.diffopt = "vertical"
 
 vim.opt.smartindent = true
 

@@ -80,6 +80,9 @@ export PATH="/opt/homebrew/anaconda3/bin:$PATH"
 
 export GOBIN="$HOME/.go/bin"
 
+export BAT_THEME="gruvbox-dark"
+
+
 #export CC="/opt/homebrew/bin/gcc-12"
 #export CXX="/opt/homebrew/bin/g++-12"
 
