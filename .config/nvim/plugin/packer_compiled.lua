@@ -174,6 +174,11 @@ _G.packer_plugins = {
     path = "/Users/didi/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["neoconf.nvim"] = {
+    loaded = true,
+    path = "/Users/didi/.local/share/nvim/site/pack/packer/start/neoconf.nvim",
+    url = "https://github.com/folke/neoconf.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/didi/.local/share/nvim/site/pack/packer/start/nvim-cmp",

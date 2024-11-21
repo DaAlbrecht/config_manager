@@ -1,5 +1,10 @@
 local lsp = require("lsp-zero")
 
+require("neoconf").setup({
+    -- override any of the default settings here
+})
+
+
 lsp.preset("recommended")
 
 lsp.nvim_workspace()
@@ -61,6 +66,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
         vim.keymap.set("i", "C-q", function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.formatting() end, opts)
 
         vim.keymap.set("n", '<leader>ds', require('telescope.builtin').lsp_document_symbols, opts)
         vim.keymap.set("n", '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, opts)
