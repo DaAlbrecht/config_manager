@@ -1,3 +1,6 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
@@ -27,8 +30,6 @@ vim.o.timeoutlen = 300
 
 vim.opt.colorcolumn = "120"
 
-vim.g.mapleader = " "
-
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -41,21 +42,3 @@ vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 
 vim.o.completeopt = 'menuone,noselect'
-
-vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { noremap = true, silent = true })
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-})
-
-
-vim.filetype.add({
-    extension = {
-        bal = 'ballerina',
-        apachesynapse = 'apachesynapse',
-    }
-})
