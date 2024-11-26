@@ -18,6 +18,9 @@ return {
     local lualine_require = require("lualine_require")
     lualine_require.require = require
 
+    local icons = require("config.init").icons
+
+
     vim.o.laststatus = vim.g.lualine_laststatus
     local git_blame = require('gitblame')
     -- This disables showing of the blame text next to the cursor
@@ -45,7 +48,16 @@ return {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filename', { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } },
-        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_x = {
+          {
+            "diff",
+            symbols = {
+              added = icons.git.added,
+              modified = icons.git.modified,
+              removed = icons.git.removed,
+            },
+          },
+          'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
       },
@@ -60,7 +72,7 @@ return {
       tabline = {},
       winbar = {},
       inactive_winbar = {},
-      extensions = { 'oil', 'lazy' }
+      extensions = {}
     }
 
     return opts

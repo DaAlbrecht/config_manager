@@ -11,6 +11,7 @@ return {
         "kkharji/sqlite.lua",
     },
     config = function()
+        local data = assert(vim.fn.stdpath "data") --[[@as string]]
         require("telescope").setup {
           defaults = {
             file_ignore_patterns = { "dune.lock" },
