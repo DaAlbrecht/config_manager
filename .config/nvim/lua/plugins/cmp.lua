@@ -12,7 +12,7 @@ return {
             local cmp = require 'cmp'
             local defaults = require("cmp.config.default")()
             local auto_select = true
-            local cmp_select = { behavior = cmp.SelectBehavior.ct }
+            local cmp_select = { behavior = cmp.SelectBehavior.Select }
             return {
                 completion = {
                     completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
