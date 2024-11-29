@@ -1,7 +1,7 @@
 -- Thanks to: https://github.com/tjdevries/config.nvim/tree/master
 return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
+    version = false,
     -- or                              , branch = '0.1.x',
     dependencies = {
         { 'nvim-lua/plenary.nvim' },

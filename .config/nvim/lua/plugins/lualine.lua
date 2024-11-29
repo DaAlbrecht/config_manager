@@ -1,8 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = {
-    "f-person/git-blame.nvim"
-  },
+    event = "VeryLazy",
   init = function()
     vim.g.lualine_laststatus = vim.o.laststatus
     if vim.fn.argc(-1) > 0 then
@@ -22,7 +20,6 @@ return {
 
 
     vim.o.laststatus = vim.g.lualine_laststatus
-    local git_blame = require('gitblame')
     -- This disables showing of the blame text next to the cursor
     vim.g.gitblame_display_virtual_text = 0
     local opts = {
@@ -47,7 +44,12 @@ return {
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { 'filename', { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } },
+        lualine_c = { 'filename',
+            {
+              function() return require("gitblame").get_current_blame_text() end,
+              cond = function() return package.loaded["gitblame"] and require("gitblame").is_blame_text_available() end,
+            },
+        },
         lualine_x = {
           {
             "diff",

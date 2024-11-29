@@ -1,4 +1,6 @@
 return {
+    {"f-person/git-blame.nvim"},
+    {
     "tpope/vim-fugitive",
     tag = "v3.7",
     config = function()
@@ -32,4 +34,5 @@ return {
             end,
         })
     end
+    }
 }
