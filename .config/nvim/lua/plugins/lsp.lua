@@ -87,8 +87,44 @@ return {
                     },
                 },
                 bashls = {},
-                rust_analyzer = {},
+                rust_analyzer = {
+                    cargo = {
+                        allFeatures = true,
+                        loadOutDirsFromCheck = true,
+                        buildScripts = {
+                            enable = true,
+                        },
+                    },
+                    -- Add clippy lints for Rust.
+                    checkOnSave = true,
+                    procMacro = {
+                        enable = true,
+                        ignored = {
+                            ["async-trait"] = { "async_trait" },
+                            ["napi-derive"] = { "napi" },
+                            ["async-recursion"] = { "async_recursion" },
+                        },
+                    },
+                },
             }
+
+            -- Workaround for https://github.com/neovim/neovim/issues/30985:
+            for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+                local default_diagnostic_handler = vim.lsp.handlers[method]
+                vim.lsp.handlers[method] = function(err, result, context, config)
+                    if err ~= nil and err.code == -32802 then
+                        return
+                    end
+                    return default_diagnostic_handler(err, result, context, config)
+                end
+            end
+
+            --lsp window
+            vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+                vim.lsp.handlers.hover,
+                { border = "rounded" }
+            )
+            --
 
             require('mason').setup()
             local ensure_installed = vim.tbl_keys(servers or {})
@@ -112,4 +148,3 @@ return {
         end,
     }
 }
-

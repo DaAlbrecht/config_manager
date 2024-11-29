@@ -1,5 +1,5 @@
 return {
-    {                -- Autocompletion
+    {                    -- Autocompletion
         'hrsh7th/nvim-cmp',
         version = false, -- last release is way too old
         event = 'InsertEnter',
@@ -12,18 +12,23 @@ return {
             local cmp = require 'cmp'
             local defaults = require("cmp.config.default")()
             local auto_select = true
+            local cmp_select = { behavior = cmp.SelectBehavior.ct }
             return {
                 completion = {
                     completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
                 },
                 preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
                 mapping = cmp.mapping.preset.insert {
-                    ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-                    ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                    ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+                    ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
                     ['<Up>'] = cmp.mapping.scroll_docs(-4),
                     ['<Down>'] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ['<CR>'] = cmp.mapping.confirm { select = true },
+                },
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
                 },
                 sources = cmp.config.sources({
                     {
