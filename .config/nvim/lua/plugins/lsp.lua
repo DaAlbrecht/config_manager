@@ -24,8 +24,10 @@ return {
             { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
             'williamboman/mason-lspconfig.nvim',
             'WhoIsSethDaniel/mason-tool-installer.nvim',
+            { "folke/neoconf.nvim" },
         },
         config = function()
+            require("neoconf").setup({})
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(event)
                     local map = function(keys, func, desc, mode)
@@ -88,21 +90,37 @@ return {
                 },
                 bashls = {},
                 rust_analyzer = {
-                    cargo = {
-                        allFeatures = true,
-                        loadOutDirsFromCheck = true,
-                        buildScripts = {
-                            enable = true,
-                        },
-                    },
-                    -- Add clippy lints for Rust.
-                    checkOnSave = true,
-                    procMacro = {
-                        enable = true,
-                        ignored = {
-                            ["async-trait"] = { "async_trait" },
-                            ["napi-derive"] = { "napi" },
-                            ["async-recursion"] = { "async_recursion" },
+                    settings = {
+                        ["rust-analyzer"] = {
+                            cargo = {
+                                allFeatures = true,
+                                loadOutDirsFromCheck = true,
+                                buildScripts = {
+                                    enable = true,
+                                },
+                            },
+                            -- Add clippy lints for Rust.
+                            check = {
+                                enable = true,
+                                command = "clippy",
+                                extraArgs = {
+                                    "--",
+                                    "--no-deps",
+                                    "-Dclippy::correctness",
+                                    "-Dclippy::complexity",
+                                    "-Wclippy::perf",
+                                    "-Wclippy::pedantic",
+                                },
+
+                            },
+                            procMacro = {
+                                enable = true,
+                                ignored = {
+                                    ["async-trait"] = { "async_trait" },
+                                    ["napi-derive"] = { "napi" },
+                                    ["async-recursion"] = { "async_recursion" },
+                                },
+                            },
                         },
                     },
                 },

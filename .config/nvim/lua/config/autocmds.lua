@@ -17,3 +17,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
         })
     end
 })
+
+vim.api.nvim_create_augroup("UmlautMappings", { clear = true })
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+    group = "UmlautMappings",
+    callback = function()
+        local map = vim.api.nvim_set_keymap
+        local opts = { noremap = true, silent = true }
+        map("i", "<C-A>", "ä", opts)
+        map("i", "<C-O>", "ö", opts)
+        map("i", "<C-U>", "ü", opts)
+    end,
+})
