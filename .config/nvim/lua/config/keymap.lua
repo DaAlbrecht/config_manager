@@ -5,7 +5,6 @@ vim.keymap.set("n", "<leader>fe", function()
     require("oil").open()
 end)
 
-
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 
@@ -31,3 +30,6 @@ vim.cmd("command! -nargs=0 W w")
 vim.keymap.set("i", "<Right>", "<Esc>")
 vim.keymap.set("n", "<Right>", "<Esc>")
 vim.keymap.set("v", "<Right>", "<Esc>")
+
+vim.keymap.set("n", "<space>l", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<space>h", "<cmd>cprev<CR>")
