@@ -2,6 +2,16 @@
 local wezterm = require 'wezterm'
 local mux = wezterm.mux
 
+local opacity_levels = { 1.0, 0.7 }
+local current_opacity_index = 1
+
+wezterm.on("toggle-opacity", function(window, pane)
+    current_opacity_index = 3 - current_opacity_index -- Toggle between 1 and 2
+    window:set_config_overrides({
+        window_background_opacity = opacity_levels[current_opacity_index],
+    })
+end)
+
 -- This table will hold the configuration.
 local config = {
 }
@@ -82,6 +92,11 @@ if wezterm.target_triple == 'aarch64-apple-darwin' then
         { key = "LeftArrow",  mods = "OPT",       action = wezterm.action { SendString = "\x1bb" } },
         -- Make Option-Right equivalent to Alt-f; forward-word
         { key = "RightArrow", mods = "OPT",       action = wezterm.action { SendString = "\x1bf" } },
+        {
+            key = "Enter", -- Change this to your preferred key
+            mods = "CMD",  -- Change this to your preferred modifier
+            action = wezterm.action.EmitEvent("toggle-opacity"),
+        },
     }
 else
     config.keys = {
