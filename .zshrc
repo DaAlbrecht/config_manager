@@ -32,7 +32,7 @@ alias kubeconfig="vim ~/.kube/config"
 #use batcat instead of cat
 alias cat="bat"
 
-alias ls="exa"
+alias ls="eza"
 # edit global git configuration
 alias gitconfig="vim ~/.gitconfig"
 
@@ -52,10 +52,12 @@ alias java17="export JAVA_HOME=/opt/homebrew/opt/openjdk@17 && export PATH=/opt/
 
 alias java11="export JAVA_HOME=/opt/homebrew/opt/openjdk@11 && export PATH=/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
+alias imgcat="wezterm imgcat"
 # load zsh-completions
 autoload -U compinit && compinit
 
 source <(kubectl completion zsh)
+source <(bevy completions zsh)
 
 source /opt/homebrew/opt/nvm/nvm.sh
 
@@ -84,6 +86,7 @@ export BAT_THEME="gruvbox-dark"
 
 #export CMAKE_C_COMPILER="/opt/homebrew/bin/gcc-12"
 #export CMAKE_CXX_COMPILER="/opt/homebrew/bin/g++-12"
+
 
 # use starship theme (needs to be at the end)
 eval "$(starship init zsh)"
