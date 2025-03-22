@@ -4,6 +4,14 @@ source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/plugins/zsh-z/zsh-z.plugin.zsh
 
+#set history size
+export HISTSIZE=10000
+#save history after logout
+export SAVEHIST=10000
+#append into history file
+setopt INC_APPEND_HISTORY
+#save only one command if 2 common are same and consistent
+setopt HIST_IGNORE_DUPS
 
 # get machine's ip address
 alias ip="ipconfig getifaddr en0"
