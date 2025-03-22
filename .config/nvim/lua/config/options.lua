@@ -35,7 +35,7 @@ vim.o.smartcase = true
 vim.o.undofile = true
 
 -- spell check
-vim.opt.spelllang = "en_us"
+vim.opt.spelllang = { 'en_us', 'de_DE' }
 vim.opt.spell = true
 
 vim.o.completeopt = 'menuone,noselect'
