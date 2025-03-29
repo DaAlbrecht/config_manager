@@ -10,9 +10,22 @@
     program = /opt/homebrew/bin/gpg
 [core]
 	excludesfile = ~/.gitignore_global
+    pager = delta
 [rebase]
 	updateRefs = true
 [rerere]
     enabled = true
 [push]
     autoSetupRemote = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+    line-numbers = true
+
+
+[merge]
+    conflictstyle = zdiff3
