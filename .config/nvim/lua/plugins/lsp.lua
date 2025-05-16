@@ -21,13 +21,16 @@ return {
         events = { "BufReadPost", "BufNewFile", "BufWritePre" },
         dependencies = {
             -- Automatically install LSPs and related tools to stdpath for Neovim
-            { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-            'williamboman/mason-lspconfig.nvim',
+            { 'mason-org/mason.nvim',           config = true }, -- NOTE: Must be loaded before dependants
+            'mason-org/mason-lspconfig.nvim',
+            { 'mason-org/mason-lspconfig.nvim', opts = {} },
             'WhoIsSethDaniel/mason-tool-installer.nvim',
             { "folke/neoconf.nvim" },
         },
         config = function()
-            require("neoconf").setup({})
+            require("neoconf").setup({
+                rust_analyzer = {}
+            })
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(event)
                     local map = function(keys, func, desc, mode)
@@ -92,6 +95,17 @@ return {
                 rust_analyzer = {
                     settings = {
                         ["rust-analyzer"] = {
+                            -- used for bevy_lint development until neoconf supports the new lsp settings
+                            rustc = {
+                                source = "discover"
+                            },
+                            workspace = {
+                                symbol = {
+                                    search = {
+                                        scope = "workspace_and_dependencies"
+                                    }
+                                }
+                            },
                             cargo = {
                                 allFeatures = true,
                                 loadOutDirsFromCheck = true,
@@ -99,7 +113,6 @@ return {
                                     enable = true,
                                 },
                             },
-                            -- Add clippy lints for Rust.
                             check = {
                                 enable = true,
                                 command = "clippy",
@@ -125,44 +138,14 @@ return {
                     },
                 },
             }
-
-            -- Workaround for https://github.com/neovim/neovim/issues/30985:
-            for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
-                local default_diagnostic_handler = vim.lsp.handlers[method]
-                vim.lsp.handlers[method] = function(err, result, context, config)
-                    if err ~= nil and err.code == -32802 then
-                        return
-                    end
-                    return default_diagnostic_handler(err, result, context, config)
-                end
-            end
-
-            --lsp window
-            vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-                vim.lsp.handlers.hover,
-                { border = "rounded" }
-            )
-            --
-
-            require('mason').setup()
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 'stylua', -- Used to format Lua code
             })
-
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-            require('mason-lspconfig').setup {
-                handlers = {
-                    function(server_name)
-                        local server = servers[server_name] or {}
-                        -- This handles overriding only values explicitly passed
-                        -- by the server configuration above. Useful when disabling
-                        -- certain features of an LSP (for example, turning off formatting for ts_ls)
-                        server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-                        require('lspconfig')[server_name].setup(server)
-                    end,
-                },
-            }
+            for server_name, config in pairs(servers) do
+                vim.lsp.config(server_name, config)
+            end
         end,
     }
 }

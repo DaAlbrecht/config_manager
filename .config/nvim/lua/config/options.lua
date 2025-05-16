@@ -39,3 +39,4 @@ vim.opt.spelllang = { 'en_us', 'de_DE' }
 vim.opt.spell = true
 
 vim.o.completeopt = 'menuone,noselect'
+vim.o.winborder = 'rounded'
