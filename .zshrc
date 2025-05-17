@@ -66,6 +66,8 @@ alias gd="git diff"
 
 alias gt="git status"
 
+alias gs="git switch"
+
 # load zsh-completions
 autoload -U compinit && compinit
 
