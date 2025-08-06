@@ -1,5 +1,5 @@
 [global]
-frame_color = "#4E4E62"
+frame_color = "#444444"
 separator_color= frame
 highlight = "#89b4fa"
 
