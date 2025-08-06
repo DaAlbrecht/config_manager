@@ -1,0 +1,17 @@
+[global]
+frame_color = "#4E4E62"
+separator_color= frame
+highlight = "#89b4fa"
+
+[urgency_low]
+background = "#1f1f28"
+foreground = "#cdd6f4"
+
+[urgency_normal]
+background = "#1f1f28"
+foreground = "#cdd6f4"
+
+[urgency_critical]
+background = "#1f1f28"
+foreground = "#cdd6f4"
+frame_color = "#fab387"
