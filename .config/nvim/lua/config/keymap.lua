@@ -31,5 +31,6 @@ vim.keymap.set("i", "<Right>", "<Esc>")
 vim.keymap.set("n", "<Right>", "<Esc>")
 vim.keymap.set("v", "<Right>", "<Esc>")
 
-vim.keymap.set("n", "<space>l", "<cmd>cnext<CR>")
-vim.keymap.set("n", "<space>h", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<leader>l", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<leader>h", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<leader>r", ':update<CR> :make<CR>')
