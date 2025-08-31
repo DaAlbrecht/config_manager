@@ -17,7 +17,7 @@ return {
         view_options = {
             show_hidden = true,
             is_always_hidden = function(name, _)
-                local folder_skip = { ".DS_Store", ".vscode" }
+                local folder_skip = { ".DS_Store" }
                 return vim.tbl_contains(folder_skip, name)
             end,
         },
