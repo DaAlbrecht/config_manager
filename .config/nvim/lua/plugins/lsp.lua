@@ -25,12 +25,8 @@ return {
             'mason-org/mason-lspconfig.nvim',
             { 'mason-org/mason-lspconfig.nvim', opts = {} },
             'WhoIsSethDaniel/mason-tool-installer.nvim',
-            { "folke/neoconf.nvim" },
         },
         config = function()
-            require("neoconf").setup({
-                rust_analyzer = {}
-            })
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(event)
                     local map = function(keys, func, desc, mode)
@@ -92,51 +88,51 @@ return {
                     },
                 },
                 bashls = {},
-                rust_analyzer = {
-                    settings = {
-                        ["rust-analyzer"] = {
-                            -- used for bevy_lint development until neoconf supports the new lsp settings
-                            rustc = {
-                                source = "discover"
-                            },
-                            workspace = {
-                                symbol = {
-                                    search = {
-                                        scope = "workspace_and_dependencies"
-                                    }
-                                }
-                            },
-                            cargo = {
-                                allFeatures = true,
-                                loadOutDirsFromCheck = true,
-                                buildScripts = {
-                                    enable = true,
-                                },
-                            },
-                            check = {
-                                enable = true,
-                                command = "clippy",
-                                extraArgs = {
-                                    "--",
-                                    "--no-deps",
-                                    "-Dclippy::correctness",
-                                    "-Dclippy::complexity",
-                                    "-Wclippy::perf",
-                                    "-Wclippy::pedantic",
-                                },
+                -- rust_analyzer = {
+                --     settings = {
+                --         ["rust-analyzer"] = {
+                --             -- used for bevy_lint development until neoconf supports the new lsp settings
+                --             rustc = {
+                --                 source = "discover"
+                --             },
+                --             workspace = {
+                --                 symbol = {
+                --                     search = {
+                --                         scope = "workspace_and_dependencies"
+                --                     }
+                --                 }
+                --             },
+                --             cargo = {
+                --                 allFeatures = true,
+                --                 loadOutDirsFromCheck = true,
+                --                 buildScripts = {
+                --                     enable = true,
+                --                 },
+                --             },
+                --             check = {
+                --                 enable = true,
+                --                 command = "clippy",
+                --                 extraArgs = {
+                --                     "--",
+                --                     "--no-deps",
+                --                     "-Dclippy::correctness",
+                --                     "-Dclippy::complexity",
+                --                     "-Wclippy::perf",
+                --                     "-Wclippy::pedantic",
+                --                 },
 
-                            },
-                            procMacro = {
-                                enable = true,
-                                ignored = {
-                                    ["async-trait"] = { "async_trait" },
-                                    ["napi-derive"] = { "napi" },
-                                    ["async-recursion"] = { "async_recursion" },
-                                },
-                            },
-                        },
-                    },
-                },
+                --             },
+                --             procMacro = {
+                --                 enable = true,
+                --                 ignored = {
+                --                     ["async-trait"] = { "async_trait" },
+                --                     ["napi-derive"] = { "napi" },
+                --                     ["async-recursion"] = { "async_recursion" },
+                --                 },
+                --             },
+                --         },
+                --     },
+                -- },
             }
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
