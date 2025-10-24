@@ -4,7 +4,7 @@
   "margin-bottom": -10,
   "spacing" : 0,
   "modules-left": [
-  "hyprland/workspaces",
+  "niri/workspaces",
   "cpu",
   "custom/cpu_temp_usage"
   ],
@@ -17,7 +17,7 @@
     "pulseaudio", 
   ],
 
-  "hyprland/workspaces": {
+  "niri/workspaces": {
     "format": "{name}: {icon}",
     "format-icons": {
       "active": "",
