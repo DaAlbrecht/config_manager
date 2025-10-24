@@ -16,12 +16,14 @@ end)
 local config = {
 }
 
+
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
+config.adjust_window_size_when_changing_font_size = false
 
 -- This is where you actually apply your config choices
 config.font = wezterm.font_with_fallback {
