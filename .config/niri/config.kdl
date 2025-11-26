@@ -238,6 +238,7 @@ spawn-at-startup "sleep2; ~/.config/hypr/scripts/wallpapers.sh"
 spawn-at-startup "wl-paste --type text --watch cliphist store"
 spawn-at-startup "wl-paste --type imate --watch cliphist store"
 spawn-sh-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+spawn-sh-at-startup "dunst -config ~/.config/dunst/dunstrc"
 
 
 environment {
@@ -305,6 +306,7 @@ window-rule {
 window-rule {
     match title="float"
     open-floating true
+    //default-floating-position x=16 y=200 relative-to="bottom-left"
 }
 
 // Example: block out two password managers from screen capture.
