@@ -1,4 +1,8 @@
 [global]
+
+monitor = 0
+follow = none
+
 frame_color = "#444444"
 separator_color= frame
 highlight = "#89b4fa"
