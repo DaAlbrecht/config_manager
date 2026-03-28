@@ -1,18 +1,7 @@
 return {
-    'mrcjkb/rustaceanvim',
-    version = '^6', -- Recommended
-    lazy = false,   -- This plugin is already lazy
-    dependencies = {
-        {
-            'Joakker/lua-json5',
-            build = './install.sh',
-            config = function()
-                -- Support JSON5 syntax in .vscode/settings.json
-                ---@diagnostic disable-next-line: duplicate-set-field
-                vim.json.decode = function(str, _) return require('json5').parse(str) end
-            end,
-        },
-    },
+    "mrcjkb/rustaceanvim",
+    version = "^8", -- Recommended
+    lazy = false, -- This plugin is already lazy
     config = function()
         vim.g.rustaceanvim = {
             server = {
@@ -21,7 +10,7 @@ return {
                 end,
                 default_settings = {
                     -- rust-analyzer language server configuration
-                    ['rust-analyzer'] = {
+                    ["rust-analyzer"] = {
                         cargo = {
                             allFeatures = true,
                             loadOutDirsFromCheck = true,
@@ -40,7 +29,6 @@ return {
                                 "-Wclippy::perf",
                                 "-Wclippy::pedantic",
                             },
-
                         },
                         procMacro = {
                             enable = true,
@@ -53,8 +41,7 @@ return {
                     },
                 },
             },
-            tools = {
-            },
+            tools = {},
         }
     end,
 }

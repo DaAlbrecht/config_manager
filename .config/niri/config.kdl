@@ -239,6 +239,7 @@ spawn-at-startup "wl-paste --type text --watch cliphist store"
 spawn-at-startup "wl-paste --type imate --watch cliphist store"
 spawn-sh-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 spawn-sh-at-startup "dunst -config ~/.config/dunst/dunstrc"
+spawn-at-startup "/usr/lib/polkit-kde-agent-1"
 
 
 environment {
