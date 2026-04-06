@@ -21,10 +21,12 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
+config.adjust_window_size_when_changing_font_size = false
+
 -- This is where you actually apply your config choices
 config.font = wezterm.font_with_fallback({
-    { family = "Berkeley Mono", stretch = "Expanded", weight = "Regular" },
-    "Hack FC Ligatured CCG",
+    { family = "Berkeley Mono", stretch = "Expanded", weight = "Medium" },
+    "CaskaydiaCove Nerd Font",
 })
 
 config.font_size = 12.0
@@ -125,19 +127,55 @@ else
         },
 
         -- new tab
-        { key = "t", mods = "ALT|SHIFT|CTRL", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
+        {
+            key = "t",
+            mods = "ALT|SHIFT|CTRL",
+            action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }),
+        },
 
         -- Pane Navigation
-        { key = "h", mods = "ALT|SHIFT|CTRL", action = wezterm.action({ ActivatePaneDirection = "Prev" }) },
-        { key = "j", mods = "ALT|SHIFT|CTRL", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
-        { key = "k", mods = "ALT|SHIFT|CTRL", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
-        { key = "l", mods = "ALT|SHIFT|CTRL", action = wezterm.action({ ActivatePaneDirection = "Next" }) },
+        {
+            key = "h",
+            mods = "ALT|SHIFT|CTRL",
+            action = wezterm.action({ ActivatePaneDirection = "Prev" }),
+        },
+        {
+            key = "j",
+            mods = "ALT|SHIFT|CTRL",
+            action = wezterm.action({ ActivatePaneDirection = "Down" }),
+        },
+        {
+            key = "k",
+            mods = "ALT|SHIFT|CTRL",
+            action = wezterm.action({ ActivatePaneDirection = "Up" }),
+        },
+        {
+            key = "l",
+            mods = "ALT|SHIFT|CTRL",
+            action = wezterm.action({ ActivatePaneDirection = "Next" }),
+        },
 
         -- Resize Panes
-        { key = "h", mods = "ALT|SHIFT",      action = wezterm.action({ AdjustPaneSize = { "Left", 5 } }) },
-        { key = "j", mods = "ALT|SHIFT",      action = wezterm.action({ AdjustPaneSize = { "Down", 5 } }) },
-        { key = "k", mods = "ALT|SHIFT",      action = wezterm.action({ AdjustPaneSize = { "Up", 5 } }) },
-        { key = "l", mods = "ALT|SHIFT",      action = wezterm.action({ AdjustPaneSize = { "Right", 5 } }) },
+        {
+            key = "h",
+            mods = "ALT|SHIFT",
+            action = wezterm.action({ AdjustPaneSize = { "Left", 5 } }),
+        },
+        {
+            key = "j",
+            mods = "ALT|SHIFT",
+            action = wezterm.action({ AdjustPaneSize = { "Down", 5 } }),
+        },
+        {
+            key = "k",
+            mods = "ALT|SHIFT",
+            action = wezterm.action({ AdjustPaneSize = { "Up", 5 } }),
+        },
+        {
+            key = "l",
+            mods = "ALT|SHIFT",
+            action = wezterm.action({ AdjustPaneSize = { "Right", 5 } }),
+        },
 
         -- Close Pane
         {
@@ -147,15 +185,29 @@ else
         },
 
         -- Copy Mode
-        { key = "v",          mods = "ALT|SHIFT|CTRL", action = wezterm.action.ActivateCopyMode },
+        { key = "v",  mods = "ALT|SHIFT|CTRL",                 action = wezterm.action.ActivateCopyMode },
 
         -- Paste
-        { key = "]",          mods = "ALT|SHIFT|CTRL", action = wezterm.action({ PasteFrom = "Clipboard" }) },
+        {
+            key = "]",
+            mods = "ALT|SHIFT|CTRL",
+            action = wezterm.action({ PasteFrom = "Clipboard" }),
+        },
 
         --jump words
-        { key = "LeftArrow",  mods = "OPT",            action = wezterm.action({ SendString = "\x1bb" }) },
+        {
+            key = "LeftArrow",
+            mods = "OPT",
+            action = wezterm.action({ SendString = "\x1bb" }),
+        },
         -- Make Option-Right equivalent to Alt-f; forward-word
-        { key = "RightArrow", mods = "OPT",            action = wezterm.action({ SendString = "\x1bf" }) },
+        {
+            key = "RightArrow",
+            mods = "OPT",
+            action = wezterm.action({ SendString = "\x1bf" }),
+        },
+
+        { key = "F9", action = wezterm.action.ShowTabNavigator },
     }
 end
 
