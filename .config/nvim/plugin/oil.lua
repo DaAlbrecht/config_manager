@@ -6,11 +6,7 @@ CustomOilBar = function()
     return "  " .. vim.fn.fnamemodify(path, ":.")
 end
 
-return {
-    'stevearc/oil.nvim',
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    opts = {
+require("oil").setup({
         win_options = {
             winbar = "%{v:lua.CustomOilBar()}",
         },
@@ -21,6 +17,4 @@ return {
                 return vim.tbl_contains(folder_skip, name)
             end,
         },
-    },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-}
+})
