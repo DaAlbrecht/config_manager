@@ -30,5 +30,7 @@ vim.pack.add({
     "https://github.com/rafamadriz/friendly-snippets.git",
     -- maybe look for alternatives
     { src = "https://github.com/ThePrimeagen/harpoon.git", version = "harpoon2" },
-    "https://github.com/nvim-lua/plenary.nvim.git"
+    "https://github.com/nvim-lua/plenary.nvim.git",
+
+    "https://github.com/saecki/crates.nvim.git"
 })

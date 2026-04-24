@@ -13,6 +13,10 @@
       "rev": "a35237e586955eb82b10510c36dbe463fe7496a5",
       "src": "https://github.com/mrjones2014/codesettings.nvim.git"
     },
+    "crates.nvim": {
+      "rev": "0f536967abd097d9a4275087483f15d012418740",
+      "src": "https://github.com/saecki/crates.nvim.git"
+    },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets.git"
